@@ -86,7 +86,7 @@ body{
 .wreath-amp{color:#b06070;font-style:italic;font-size:40px;display:block;line-height:1.1}
 .wreath-year{font-size:10px;letter-spacing:4px;color:#b06070;text-transform:uppercase;margin-top:4px}
 .hero-names{font-family:'Cormorant Garamond',Georgia,serif;font-size:34px;font-weight:300;color:#1a1a1a;line-height:1.1;margin-bottom:8px}
-.hero-tagline{font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;font-style:italic;color:#999}
+.hero-tagline{font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;font-style:italic;color:#777}
 
 /* ── Floral dividers ── */
 .floral-divider{display:flex;align-items:center;padding:2px 12px;gap:6px;position:relative;z-index:1}
@@ -112,7 +112,7 @@ body{
 .event-card::after{content:'';position:absolute;right:8px;top:50%;transform:translateY(-50%);width:44px;height:44px;pointer-events:none;opacity:.8;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Cg opacity='.14' fill='%23b06070'%3E%3Cellipse cx='22' cy='7' rx='4' ry='8'/%3E%3Cellipse cx='22' cy='37' rx='4' ry='8'/%3E%3Cellipse cx='7' cy='22' rx='8' ry='4'/%3E%3Cellipse cx='37' cy='22' rx='8' ry='4'/%3E%3Cellipse cx='10' cy='10' rx='3.5' ry='7' transform='rotate(45 10 10)'/%3E%3Cellipse cx='34' cy='34' rx='3.5' ry='7' transform='rotate(45 34 34)'/%3E%3Cellipse cx='34' cy='10' rx='3.5' ry='7' transform='rotate(-45 34 10)'/%3E%3Cellipse cx='10' cy='34' rx='3.5' ry='7' transform='rotate(-45 10 34)'/%3E%3Ccircle cx='22' cy='22' r='4.5'/%3E%3C/g%3E%3C/svg%3E");background-size:contain;background-repeat:no-repeat}
 .event-date-col{text-align:center;min-width:38px}
 .event-day{font-family:'Cormorant Garamond',Georgia,serif;font-size:30px;font-weight:300;color:#b06070;line-height:1}
-.event-month{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#bbb;margin-top:2px}
+.event-month{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#888;margin-top:2px}
 .event-sep{width:1px;height:34px;background:#e8d8d0;flex-shrink:0}
 .event-info{flex:1}
 .event-name{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#555;margin-bottom:3px}
@@ -121,7 +121,7 @@ body{
 /* ── Venue ── */
 .venue-block{padding:16px 20px 36px;text-align:center;position:relative;z-index:1}
 .venue-name{font-family:'Cormorant Garamond',Georgia,serif;font-size:22px;color:#1a1a1a;margin-bottom:4px}
-.venue-city{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#bbb;margin-bottom:16px}
+.venue-city{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#888;margin-bottom:16px}
 .map-btn{display:inline-block;background:#b06070;color:#fff;font-family:'Jost',sans-serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;text-decoration:none;padding:12px 28px;position:relative;overflow:hidden;transition:background .3s}
 .map-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.22) 50%,transparent 70%);transform:translateX(-100%);transition:transform .5s}
 .map-btn:hover{background:#9a4f5f}
@@ -129,7 +129,7 @@ body{
 
 /* ── Footer ── */
 .footer{padding:14px 20px;text-align:center;background:#fdf8f5;border-top:1px solid #ede4de;position:relative;z-index:1}
-.footer-text{font-size:10px;letter-spacing:2px;color:#ccc;text-transform:uppercase}
+.footer-text{font-size:10px;letter-spacing:2px;color:#999;text-transform:uppercase}
 
 /* ── Mobile ── */
 @media(max-width:360px){
@@ -344,9 +344,29 @@ class Petal {
 }
 
 const petals = Array.from({ length: 65 }, () => new Petal());
+
+let cardRect = null;
+function updateCardRect() {
+  const card = document.querySelector('.invite-card');
+  if (card) cardRect = card.getBoundingClientRect();
+}
+window.addEventListener('load', updateCardRect);
+window.addEventListener('resize', updateCardRect);
+
 function petalLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  petals.forEach(p => { p.tick(); p.draw(); });
+  petals.forEach(p => {
+    p.tick();
+    // Reduce opacity when petal is over the card area
+    if (cardRect && p.x > cardRect.left && p.x < cardRect.right) {
+      const savedOp = p.op;
+      p.op *= 0.25;
+      p.draw();
+      p.op = savedOp;
+    } else {
+      p.draw();
+    }
+  });
   requestAnimationFrame(petalLoop);
 }
 petalLoop();
