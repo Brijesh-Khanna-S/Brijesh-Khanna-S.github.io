@@ -10,12 +10,26 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 body{
-  background:#fdf8f5;
+  background-color:#fdf8f5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cg transform='translate(50,50)' opacity='.085' fill='%23b06070'%3E%3Cpath d='M0,0 C-5,-4 -5,-15 0,-19 C5,-15 5,-4 0,0Z'/%3E%3Cpath d='M0,0 C-5,-4 -5,-15 0,-19 C5,-15 5,-4 0,0Z' transform='rotate(72)'/%3E%3Cpath d='M0,0 C-5,-4 -5,-15 0,-19 C5,-15 5,-4 0,0Z' transform='rotate(144)'/%3E%3Cpath d='M0,0 C-5,-4 -5,-15 0,-19 C5,-15 5,-4 0,0Z' transform='rotate(216)'/%3E%3Cpath d='M0,0 C-5,-4 -5,-15 0,-19 C5,-15 5,-4 0,0Z' transform='rotate(288)'/%3E%3Ccircle cx='0' cy='0' r='3'/%3E%3Ccircle cx='0' cy='0' r='1.2' fill='%23fff' opacity='.55'/%3E%3C/g%3E%3Cg transform='translate(50,50)' opacity='.04' fill='none' stroke='%23b06070' stroke-width='.7'%3E%3Cpath d='M0,0 C-4,-4 -4,-14 0,-17 C4,-14 4,-4 0,0Z' transform='rotate(36)'/%3E%3Cpath d='M0,0 C-4,-4 -4,-14 0,-17 C4,-14 4,-4 0,0Z' transform='rotate(108)'/%3E%3Cpath d='M0,0 C-4,-4 -4,-14 0,-17 C4,-14 4,-4 0,0Z' transform='rotate(180)'/%3E%3Cpath d='M0,0 C-4,-4 -4,-14 0,-17 C4,-14 4,-4 0,0Z' transform='rotate(252)'/%3E%3Cpath d='M0,0 C-4,-4 -4,-14 0,-17 C4,-14 4,-4 0,0Z' transform='rotate(324)'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:100px 100px;
   font-family:'Jost',system-ui,sans-serif;
   font-weight:300;
   color:#333;
   min-height:100vh;
   overflow-x:hidden;
+}
+
+/* ── Card watermark ── */
+.card-watermark{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
 }
 
 .page-wrap{
@@ -147,6 +161,50 @@ body{
 <div class="page-wrap">
 <div class="invite-card">
 
+  <!-- ── Card watermark (Option C) ── -->
+  <div class="card-watermark">
+    <svg width="340" height="340" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outer ring: 8 large rose petals (bezier) -->
+      <g opacity=".055" fill="#b06070">
+        <path d="M100,100 C92,82 90,56 100,44 C110,56 108,82 100,100Z"/>
+        <path d="M100,100 C92,82 90,56 100,44 C110,56 108,82 100,100Z" transform="rotate(45,100,100)"/>
+        <path d="M100,100 C92,82 90,56 100,44 C110,56 108,82 100,100Z" transform="rotate(90,100,100)"/>
+        <path d="M100,100 C92,82 90,56 100,44 C110,56 108,82 100,100Z" transform="rotate(135,100,100)"/>
+        <path d="M100,100 C92,82 90,56 100,44 C110,56 108,82 100,100Z" transform="rotate(180,100,100)"/>
+        <path d="M100,100 C92,82 90,56 100,44 C110,56 108,82 100,100Z" transform="rotate(225,100,100)"/>
+        <path d="M100,100 C92,82 90,56 100,44 C110,56 108,82 100,100Z" transform="rotate(270,100,100)"/>
+        <path d="M100,100 C92,82 90,56 100,44 C110,56 108,82 100,100Z" transform="rotate(315,100,100)"/>
+      </g>
+      <!-- Mid ring: 8 petals offset 22.5° (layered rose effect) -->
+      <g opacity=".065" fill="#c9909a">
+        <path d="M100,100 C94,85 92,64 100,55 C108,64 106,85 100,100Z" transform="rotate(22.5,100,100)"/>
+        <path d="M100,100 C94,85 92,64 100,55 C108,64 106,85 100,100Z" transform="rotate(67.5,100,100)"/>
+        <path d="M100,100 C94,85 92,64 100,55 C108,64 106,85 100,100Z" transform="rotate(112.5,100,100)"/>
+        <path d="M100,100 C94,85 92,64 100,55 C108,64 106,85 100,100Z" transform="rotate(157.5,100,100)"/>
+        <path d="M100,100 C94,85 92,64 100,55 C108,64 106,85 100,100Z" transform="rotate(202.5,100,100)"/>
+        <path d="M100,100 C94,85 92,64 100,55 C108,64 106,85 100,100Z" transform="rotate(247.5,100,100)"/>
+        <path d="M100,100 C94,85 92,64 100,55 C108,64 106,85 100,100Z" transform="rotate(292.5,100,100)"/>
+        <path d="M100,100 C94,85 92,64 100,55 C108,64 106,85 100,100Z" transform="rotate(337.5,100,100)"/>
+      </g>
+      <!-- Inner ring: 6 small petals -->
+      <g opacity=".08" fill="#b06070">
+        <path d="M100,100 C96,90 95,76 100,70 C105,76 104,90 100,100Z"/>
+        <path d="M100,100 C96,90 95,76 100,70 C105,76 104,90 100,100Z" transform="rotate(60,100,100)"/>
+        <path d="M100,100 C96,90 95,76 100,70 C105,76 104,90 100,100Z" transform="rotate(120,100,100)"/>
+        <path d="M100,100 C96,90 95,76 100,70 C105,76 104,90 100,100Z" transform="rotate(180,100,100)"/>
+        <path d="M100,100 C96,90 95,76 100,70 C105,76 104,90 100,100Z" transform="rotate(240,100,100)"/>
+        <path d="M100,100 C96,90 95,76 100,70 C105,76 104,90 100,100Z" transform="rotate(300,100,100)"/>
+      </g>
+      <!-- Rings -->
+      <circle cx="100" cy="100" r="54" stroke="#b06070" stroke-width=".7" opacity=".07" fill="none"/>
+      <circle cx="100" cy="100" r="37" stroke="#b06070" stroke-width=".5" opacity=".06" fill="none"/>
+      <circle cx="100" cy="100" r="70" stroke="#b06070" stroke-width=".5" opacity=".04" fill="none" stroke-dasharray="3 4"/>
+      <!-- Center -->
+      <circle cx="100" cy="100" r="9" fill="#b06070" opacity=".08"/>
+      <circle cx="100" cy="100" r="4" fill="#fff" opacity=".45"/>
+    </svg>
+  </div>
+
   <!-- ── Corner florals ── -->
   <div class="corner-floral tl"><svg viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 111 Q30 74 57 46 Q77 22 108 5" stroke="#b06070" stroke-width="1.5" fill="none" opacity=".55"/><path d="M19 94 Q37 70 54 54" stroke="#c9909a" stroke-width=".9" fill="none" opacity=".35"/><path d="M50 56 Q68 38 82 24" stroke="#c9909a" stroke-width=".9" fill="none" opacity=".35"/><ellipse cx="23" cy="86" rx="10" ry="4.2" transform="rotate(-42 23 86)" fill="#b06070" opacity=".32"/><ellipse cx="40" cy="68" rx="10" ry="4" transform="rotate(-48 40 68)" fill="#c9909a" opacity=".27"/><ellipse cx="57" cy="50" rx="9" ry="3.7" transform="rotate(-52 57 50)" fill="#b06070" opacity=".29"/><ellipse cx="72" cy="34" rx="8" ry="3.3" transform="rotate(-55 72 34)" fill="#c9909a" opacity=".24"/><ellipse cx="86" cy="20" rx="7" ry="3" transform="rotate(-58 86 20)" fill="#d4a0a8" opacity=".2"/><ellipse cx="30" cy="80" rx="8" ry="3.3" transform="rotate(-132 30 80)" fill="#d4a0a8" opacity=".2"/><ellipse cx="46" cy="62" rx="7.5" ry="3" transform="rotate(-134 46 62)" fill="#d4a0a8" opacity=".18"/><circle cx="108" cy="7" r="4.5" fill="#b06070" opacity=".68"/><circle cx="100" cy="4" r="3.2" fill="#b06070" opacity=".5"/><circle cx="112" cy="15" r="3.2" fill="#b06070" opacity=".5"/><circle cx="103" cy="2" r="2.2" fill="#e8c0c8" opacity=".6"/><circle cx="112" cy="9" r="2" fill="#e8c0c8" opacity=".5"/><circle cx="62" cy="46" r="3.4" fill="#b06070" opacity=".55"/><circle cx="56" cy="43" r="2.3" fill="#d4a0a8" opacity=".4"/><circle cx="67" cy="43" r="2.3" fill="#d4a0a8" opacity=".4"/><circle cx="33" cy="75" r="2.5" fill="#b06070" opacity=".45"/><circle cx="49" cy="59" r="2.2" fill="#b06070" opacity=".4"/><circle cx="76" cy="30" r="2" fill="#b06070" opacity=".38"/><circle cx="90" cy="16" r="1.7" fill="#b06070" opacity=".35"/><circle cx="16" cy="99" r="1.7" fill="#c9909a" opacity=".4"/><circle cx="13" cy="94" r="1.3" fill="#c9909a" opacity=".32"/></svg></div>
   <div class="corner-floral tr"><svg viewBox="0 0 116 116" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 111 Q30 74 57 46 Q77 22 108 5" stroke="#b06070" stroke-width="1.5" fill="none" opacity=".55"/><path d="M19 94 Q37 70 54 54" stroke="#c9909a" stroke-width=".9" fill="none" opacity=".35"/><path d="M50 56 Q68 38 82 24" stroke="#c9909a" stroke-width=".9" fill="none" opacity=".35"/><ellipse cx="23" cy="86" rx="10" ry="4.2" transform="rotate(-42 23 86)" fill="#b06070" opacity=".32"/><ellipse cx="40" cy="68" rx="10" ry="4" transform="rotate(-48 40 68)" fill="#c9909a" opacity=".27"/><ellipse cx="57" cy="50" rx="9" ry="3.7" transform="rotate(-52 57 50)" fill="#b06070" opacity=".29"/><ellipse cx="72" cy="34" rx="8" ry="3.3" transform="rotate(-55 72 34)" fill="#c9909a" opacity=".24"/><ellipse cx="86" cy="20" rx="7" ry="3" transform="rotate(-58 86 20)" fill="#d4a0a8" opacity=".2"/><ellipse cx="30" cy="80" rx="8" ry="3.3" transform="rotate(-132 30 80)" fill="#d4a0a8" opacity=".2"/><ellipse cx="46" cy="62" rx="7.5" ry="3" transform="rotate(-134 46 62)" fill="#d4a0a8" opacity=".18"/><circle cx="108" cy="7" r="4.5" fill="#b06070" opacity=".68"/><circle cx="100" cy="4" r="3.2" fill="#b06070" opacity=".5"/><circle cx="112" cy="15" r="3.2" fill="#b06070" opacity=".5"/><circle cx="103" cy="2" r="2.2" fill="#e8c0c8" opacity=".6"/><circle cx="112" cy="9" r="2" fill="#e8c0c8" opacity=".5"/><circle cx="62" cy="46" r="3.4" fill="#b06070" opacity=".55"/><circle cx="56" cy="43" r="2.3" fill="#d4a0a8" opacity=".4"/><circle cx="67" cy="43" r="2.3" fill="#d4a0a8" opacity=".4"/><circle cx="33" cy="75" r="2.5" fill="#b06070" opacity=".45"/><circle cx="49" cy="59" r="2.2" fill="#b06070" opacity=".4"/><circle cx="76" cy="30" r="2" fill="#b06070" opacity=".38"/><circle cx="90" cy="16" r="1.7" fill="#b06070" opacity=".35"/><circle cx="16" cy="99" r="1.7" fill="#c9909a" opacity=".4"/><circle cx="13" cy="94" r="1.3" fill="#c9909a" opacity=".32"/></svg></div>
@@ -165,45 +223,89 @@ body{
     <div class="hero-eyebrow">You are invited to celebrate</div>
     <div class="wreath-wrap">
 
-      <!-- Outer ring: 12 botanical clusters every 30° -->
+      <!-- Outer ring: 8 five-petal bezier flowers every 45° -->
       <svg class="ring-outer" style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="120" cy="120" r="108" stroke="#b06070" stroke-width="1" opacity=".28" stroke-dasharray="4 6"/>
-        <g transform="translate(120,12)"><ellipse cx="0" cy="-7" rx="6" ry="2.5" transform="rotate(-25)" fill="#b06070" opacity=".45"/><ellipse cx="0" cy="-7" rx="6" ry="2.5" transform="rotate(25)" fill="#c9909a" opacity=".4"/><circle cx="0" cy="-1" r="3.8" fill="#b06070" opacity=".6"/><circle cx="-4" cy="-3" r="2" fill="#e8c0c8" opacity=".5"/><circle cx="4" cy="-3" r="2" fill="#e8c0c8" opacity=".5"/><circle cx="0" cy="-1" r="1.6" fill="#fff" opacity=".6"/></g>
-        <g transform="translate(174,34) rotate(30)"><ellipse cx="0" cy="-6" rx="5" ry="2.2" transform="rotate(-20)" fill="#c9909a" opacity=".38"/><ellipse cx="0" cy="-6" rx="5" ry="2.2" transform="rotate(20)" fill="#d4a0a8" opacity=".35"/><circle cx="0" cy="0" r="3" fill="#b06070" opacity=".52"/><circle cx="0" cy="0" r="1.2" fill="#fff" opacity=".5"/></g>
-        <g transform="translate(208,74) rotate(60)"><ellipse cx="0" cy="-5" rx="4.5" ry="2" transform="rotate(-15)" fill="#c9909a" opacity=".35"/><circle cx="0" cy="0" r="2.8" fill="#c9909a" opacity=".48"/><circle cx="0" cy="0" r="1.1" fill="#fff" opacity=".45"/></g>
-        <g transform="translate(228,120) rotate(90)"><ellipse cx="0" cy="-7" rx="6" ry="2.5" transform="rotate(-25)" fill="#b06070" opacity=".45"/><ellipse cx="0" cy="-7" rx="6" ry="2.5" transform="rotate(25)" fill="#c9909a" opacity=".4"/><circle cx="0" cy="-1" r="3.8" fill="#b06070" opacity=".6"/><circle cx="-4" cy="-3" r="2" fill="#e8c0c8" opacity=".5"/><circle cx="4" cy="-3" r="2" fill="#e8c0c8" opacity=".5"/><circle cx="0" cy="-1" r="1.6" fill="#fff" opacity=".6"/></g>
-        <g transform="translate(208,166) rotate(120)"><ellipse cx="0" cy="-6" rx="5" ry="2.2" transform="rotate(-20)" fill="#c9909a" opacity=".38"/><circle cx="0" cy="0" r="3" fill="#b06070" opacity=".52"/><circle cx="0" cy="0" r="1.2" fill="#fff" opacity=".5"/></g>
-        <g transform="translate(174,206) rotate(150)"><ellipse cx="0" cy="-5" rx="4.5" ry="2" transform="rotate(-15)" fill="#c9909a" opacity=".35"/><circle cx="0" cy="0" r="2.8" fill="#c9909a" opacity=".48"/><circle cx="0" cy="0" r="1.1" fill="#fff" opacity=".45"/></g>
-        <g transform="translate(120,228) rotate(180)"><ellipse cx="0" cy="-7" rx="6" ry="2.5" transform="rotate(-25)" fill="#b06070" opacity=".45"/><ellipse cx="0" cy="-7" rx="6" ry="2.5" transform="rotate(25)" fill="#c9909a" opacity=".4"/><circle cx="0" cy="-1" r="3.8" fill="#b06070" opacity=".6"/><circle cx="-4" cy="-3" r="2" fill="#e8c0c8" opacity=".5"/><circle cx="4" cy="-3" r="2" fill="#e8c0c8" opacity=".5"/><circle cx="0" cy="-1" r="1.6" fill="#fff" opacity=".6"/></g>
-        <g transform="translate(66,206) rotate(210)"><ellipse cx="0" cy="-6" rx="5" ry="2.2" transform="rotate(-20)" fill="#c9909a" opacity=".38"/><circle cx="0" cy="0" r="3" fill="#b06070" opacity=".52"/><circle cx="0" cy="0" r="1.2" fill="#fff" opacity=".5"/></g>
-        <g transform="translate(32,166) rotate(240)"><ellipse cx="0" cy="-5" rx="4.5" ry="2" transform="rotate(-15)" fill="#c9909a" opacity=".35"/><circle cx="0" cy="0" r="2.8" fill="#c9909a" opacity=".48"/><circle cx="0" cy="0" r="1.1" fill="#fff" opacity=".45"/></g>
-        <g transform="translate(12,120) rotate(270)"><ellipse cx="0" cy="-7" rx="6" ry="2.5" transform="rotate(-25)" fill="#b06070" opacity=".45"/><ellipse cx="0" cy="-7" rx="6" ry="2.5" transform="rotate(25)" fill="#c9909a" opacity=".4"/><circle cx="0" cy="-1" r="3.8" fill="#b06070" opacity=".6"/><circle cx="-4" cy="-3" r="2" fill="#e8c0c8" opacity=".5"/><circle cx="4" cy="-3" r="2" fill="#e8c0c8" opacity=".5"/><circle cx="0" cy="-1" r="1.6" fill="#fff" opacity=".6"/></g>
-        <g transform="translate(32,74) rotate(300)"><ellipse cx="0" cy="-6" rx="5" ry="2.2" transform="rotate(-20)" fill="#c9909a" opacity=".38"/><circle cx="0" cy="0" r="3" fill="#b06070" opacity=".52"/><circle cx="0" cy="0" r="1.2" fill="#fff" opacity=".5"/></g>
-        <g transform="translate(66,34) rotate(330)"><ellipse cx="0" cy="-5" rx="4.5" ry="2" transform="rotate(-15)" fill="#c9909a" opacity=".35"/><circle cx="0" cy="0" r="2.8" fill="#c9909a" opacity=".48"/><circle cx="0" cy="0" r="1.1" fill="#fff" opacity=".45"/></g>
+        <circle cx="120" cy="120" r="108" stroke="#b06070" stroke-width=".8" opacity=".22" stroke-dasharray="3 5"/>
+        <!-- 5-petal bezier flower macro: petals point outward (upward in local coords) -->
+        <!-- N (120,12) rot 0 -->
+        <g transform="translate(120,12)"><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" fill="#b06070" opacity=".55"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(72)" fill="#b06070" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(144)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(216)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(288)" fill="#b06070" opacity=".5"/><circle cx="0" cy="0" r="2.5" fill="#b06070" opacity=".7"/><circle cx="0" cy="0" r="1" fill="#fff" opacity=".6"/></g>
+        <!-- NE (196,44) rot 45 -->
+        <g transform="translate(196,44) rotate(45)"><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" fill="#c9909a" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(72)" fill="#b06070" opacity=".48"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(144)" fill="#b06070" opacity=".48"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(216)" fill="#c9909a" opacity=".48"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(288)" fill="#c9909a" opacity=".48"/><circle cx="0" cy="0" r="2.5" fill="#b06070" opacity=".65"/><circle cx="0" cy="0" r="1" fill="#fff" opacity=".6"/></g>
+        <!-- E (228,120) rot 90 -->
+        <g transform="translate(228,120) rotate(90)"><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" fill="#b06070" opacity=".55"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(72)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(144)" fill="#b06070" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(216)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(288)" fill="#b06070" opacity=".5"/><circle cx="0" cy="0" r="2.5" fill="#b06070" opacity=".7"/><circle cx="0" cy="0" r="1" fill="#fff" opacity=".6"/></g>
+        <!-- SE (196,196) rot 135 -->
+        <g transform="translate(196,196) rotate(135)"><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" fill="#c9909a" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(72)" fill="#b06070" opacity=".48"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(144)" fill="#b06070" opacity=".48"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(216)" fill="#c9909a" opacity=".48"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(288)" fill="#c9909a" opacity=".48"/><circle cx="0" cy="0" r="2.5" fill="#b06070" opacity=".65"/><circle cx="0" cy="0" r="1" fill="#fff" opacity=".6"/></g>
+        <!-- S (120,228) rot 180 -->
+        <g transform="translate(120,228) rotate(180)"><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" fill="#b06070" opacity=".55"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(72)" fill="#b06070" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(144)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(216)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(288)" fill="#b06070" opacity=".5"/><circle cx="0" cy="0" r="2.5" fill="#b06070" opacity=".7"/><circle cx="0" cy="0" r="1" fill="#fff" opacity=".6"/></g>
+        <!-- SW (44,196) rot 225 -->
+        <g transform="translate(44,196) rotate(225)"><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" fill="#c9909a" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(72)" fill="#b06070" opacity=".48"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(144)" fill="#b06070" opacity=".48"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(216)" fill="#c9909a" opacity=".48"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(288)" fill="#c9909a" opacity=".48"/><circle cx="0" cy="0" r="2.5" fill="#b06070" opacity=".65"/><circle cx="0" cy="0" r="1" fill="#fff" opacity=".6"/></g>
+        <!-- W (12,120) rot 270 -->
+        <g transform="translate(12,120) rotate(270)"><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" fill="#b06070" opacity=".55"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(72)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(144)" fill="#b06070" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(216)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(288)" fill="#b06070" opacity=".5"/><circle cx="0" cy="0" r="2.5" fill="#b06070" opacity=".7"/><circle cx="0" cy="0" r="1" fill="#fff" opacity=".6"/></g>
+        <!-- NW (44,44) rot 315 -->
+        <g transform="translate(44,44) rotate(315)"><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" fill="#c9909a" opacity=".5"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(72)" fill="#b06070" opacity=".48"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(144)" fill="#b06070" opacity=".48"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(216)" fill="#c9909a" opacity=".48"/><path d="M0,0 C-5,-4 -5,-14 0,-18 C5,-14 5,-4 0,0Z" transform="rotate(288)" fill="#c9909a" opacity=".48"/><circle cx="0" cy="0" r="2.5" fill="#b06070" opacity=".65"/><circle cx="0" cy="0" r="1" fill="#fff" opacity=".6"/></g>
       </svg>
 
-      <!-- Mid ring (reverse): 8 different flower types -->
+      <!-- Mid ring (reverse): 8 real flower types alternating — rose, cherry blossom, daisy, tulip -->
       <svg class="ring-mid" style="position:absolute;inset:10px;width:calc(100% - 20px);height:calc(100% - 20px)" viewBox="0 0 220 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="110" cy="110" r="96" stroke="#c9909a" stroke-width="1.2" opacity=".3"/>
-        <g transform="translate(110,14)"><rect x="-4" y="-10" width="8" height="10" rx="4" fill="#b06070" opacity=".55"/><rect x="-4" y="0" width="8" height="10" rx="4" fill="#b06070" opacity=".55"/><rect x="-10" y="-4" width="10" height="8" rx="4" fill="#b06070" opacity=".55"/><rect x="0" y="-4" width="10" height="8" rx="4" fill="#b06070" opacity=".55"/><circle cx="0" cy="0" r="3.5" fill="#fff" opacity=".8"/><circle cx="0" cy="0" r="2" fill="#b06070" opacity=".9"/></g>
-        <g transform="translate(178,42) rotate(45)"><ellipse cx="0" cy="-7" rx="2.2" ry="5" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(45)" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(90)" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(135)" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(180)" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(225)" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(270)" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(315)" fill="#e8b0bc" opacity=".6"/><circle cx="0" cy="0" r="3" fill="#f5d0d8"/><circle cx="0" cy="0" r="1.5" fill="#b06070" opacity=".9"/></g>
-        <g transform="translate(206,110) rotate(90)"><ellipse cx="0" cy="-9" rx="5" ry="8" fill="#c9909a" opacity=".4"/><ellipse cx="-6" cy="-5" rx="4" ry="7" transform="rotate(40)" fill="#d4a0a8" opacity=".4"/><ellipse cx="6" cy="-5" rx="4" ry="7" transform="rotate(-40)" fill="#d4a0a8" opacity=".4"/><ellipse cx="0" cy="-3" rx="3.5" ry="5" fill="#b06070" opacity=".55"/><circle cx="0" cy="0" r="2.5" fill="#b06070" opacity=".8"/><circle cx="0" cy="0" r="1" fill="#fff" opacity=".6"/></g>
-        <g transform="translate(178,178) rotate(135)"><ellipse cx="0" cy="-8" rx="3" ry="7" fill="#c9909a" opacity=".55"/><ellipse cx="0" cy="-8" rx="3" ry="7" transform="rotate(72)" fill="#c9909a" opacity=".55"/><ellipse cx="0" cy="-8" rx="3" ry="7" transform="rotate(144)" fill="#c9909a" opacity=".55"/><ellipse cx="0" cy="-8" rx="3" ry="7" transform="rotate(216)" fill="#c9909a" opacity=".55"/><ellipse cx="0" cy="-8" rx="3" ry="7" transform="rotate(288)" fill="#c9909a" opacity=".55"/><circle cx="0" cy="0" r="3" fill="#fff" opacity=".85"/><circle cx="0" cy="0" r="1.8" fill="#b06070" opacity=".9"/></g>
-        <g transform="translate(110,206) rotate(180)"><rect x="-4" y="-10" width="8" height="10" rx="4" fill="#b06070" opacity=".55"/><rect x="-4" y="0" width="8" height="10" rx="4" fill="#b06070" opacity=".55"/><rect x="-10" y="-4" width="10" height="8" rx="4" fill="#b06070" opacity=".55"/><rect x="0" y="-4" width="10" height="8" rx="4" fill="#b06070" opacity=".55"/><circle cx="0" cy="0" r="3.5" fill="#fff" opacity=".8"/><circle cx="0" cy="0" r="2" fill="#b06070" opacity=".9"/></g>
-        <g transform="translate(42,178) rotate(225)"><ellipse cx="0" cy="-7" rx="2.2" ry="5" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(45)" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(90)" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(135)" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(180)" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(225)" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(270)" fill="#e8b0bc" opacity=".6"/><ellipse cx="0" cy="-7" rx="2.2" ry="5" transform="rotate(315)" fill="#e8b0bc" opacity=".6"/><circle cx="0" cy="0" r="3" fill="#f5d0d8"/><circle cx="0" cy="0" r="1.5" fill="#b06070" opacity=".9"/></g>
-        <g transform="translate(14,110) rotate(270)"><ellipse cx="0" cy="-9" rx="5" ry="8" fill="#c9909a" opacity=".4"/><ellipse cx="-6" cy="-5" rx="4" ry="7" transform="rotate(40)" fill="#d4a0a8" opacity=".4"/><ellipse cx="6" cy="-5" rx="4" ry="7" transform="rotate(-40)" fill="#d4a0a8" opacity=".4"/><ellipse cx="0" cy="-3" rx="3.5" ry="5" fill="#b06070" opacity=".55"/><circle cx="0" cy="0" r="2.5" fill="#b06070" opacity=".8"/><circle cx="0" cy="0" r="1" fill="#fff" opacity=".6"/></g>
-        <g transform="translate(42,42) rotate(315)"><ellipse cx="0" cy="-8" rx="3" ry="7" fill="#c9909a" opacity=".55"/><ellipse cx="0" cy="-8" rx="3" ry="7" transform="rotate(72)" fill="#c9909a" opacity=".55"/><ellipse cx="0" cy="-8" rx="3" ry="7" transform="rotate(144)" fill="#c9909a" opacity=".55"/><ellipse cx="0" cy="-8" rx="3" ry="7" transform="rotate(216)" fill="#c9909a" opacity=".55"/><ellipse cx="0" cy="-8" rx="3" ry="7" transform="rotate(288)" fill="#c9909a" opacity=".55"/><circle cx="0" cy="0" r="3" fill="#fff" opacity=".85"/><circle cx="0" cy="0" r="1.8" fill="#b06070" opacity=".9"/></g>
+        <circle cx="110" cy="110" r="96" stroke="#c9909a" stroke-width=".8" opacity=".22"/>
+        <!-- N (110,14) — Rose: layered bezier petals -->
+        <g transform="translate(110,14) rotate(0)">
+          <path d="M0,0 C-6,-4 -7,-16 0,-21 C7,-16 6,-4 0,0Z" fill="#b06070" opacity=".5"/><path d="M0,0 C-6,-4 -7,-16 0,-21 C7,-16 6,-4 0,0Z" transform="rotate(72)" fill="#c9909a" opacity=".45"/><path d="M0,0 C-6,-4 -7,-16 0,-21 C7,-16 6,-4 0,0Z" transform="rotate(144)" fill="#b06070" opacity=".45"/><path d="M0,0 C-6,-4 -7,-16 0,-21 C7,-16 6,-4 0,0Z" transform="rotate(216)" fill="#c9909a" opacity=".45"/><path d="M0,0 C-6,-4 -7,-16 0,-21 C7,-16 6,-4 0,0Z" transform="rotate(288)" fill="#b06070" opacity=".5"/>
+          <path d="M0,0 C-4,-3 -5,-12 0,-15 C5,-12 4,-3 0,0Z" transform="rotate(36)" fill="#b06070" opacity=".55"/><path d="M0,0 C-4,-3 -5,-12 0,-15 C5,-12 4,-3 0,0Z" transform="rotate(108)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-4,-3 -5,-12 0,-15 C5,-12 4,-3 0,0Z" transform="rotate(180)" fill="#b06070" opacity=".55"/><path d="M0,0 C-4,-3 -5,-12 0,-15 C5,-12 4,-3 0,0Z" transform="rotate(252)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-4,-3 -5,-12 0,-15 C5,-12 4,-3 0,0Z" transform="rotate(324)" fill="#b06070" opacity=".55"/>
+          <circle cx="0" cy="0" r="2.8" fill="#b06070" opacity=".7"/><circle cx="0" cy="0" r="1.1" fill="#fff" opacity=".6"/>
+        </g>
+        <!-- NE (178,42) — Cherry blossom: 5 notched-tip petals -->
+        <g transform="translate(178,42) rotate(45)">
+          <path d="M0,0 C-4,-3 -6,-11 -3,-15 C0,-17 0,-17 3,-15 C6,-11 4,-3 0,0Z" fill="#e8b0bc" opacity=".6"/><path d="M0,0 C-4,-3 -6,-11 -3,-15 C0,-17 0,-17 3,-15 C6,-11 4,-3 0,0Z" transform="rotate(72)" fill="#e8b0bc" opacity=".58"/><path d="M0,0 C-4,-3 -6,-11 -3,-15 C0,-17 0,-17 3,-15 C6,-11 4,-3 0,0Z" transform="rotate(144)" fill="#f0c4cc" opacity=".6"/><path d="M0,0 C-4,-3 -6,-11 -3,-15 C0,-17 0,-17 3,-15 C6,-11 4,-3 0,0Z" transform="rotate(216)" fill="#e8b0bc" opacity=".58"/><path d="M0,0 C-4,-3 -6,-11 -3,-15 C0,-17 0,-17 3,-15 C6,-11 4,-3 0,0Z" transform="rotate(288)" fill="#f0c4cc" opacity=".6"/>
+          <circle cx="0" cy="0" r="2.5" fill="#f5d0d8" opacity=".8"/><circle cx="0" cy="0" r="1.2" fill="#b06070" opacity=".8"/>
+        </g>
+        <!-- E (206,110) — Daisy: 8 slim bezier petals -->
+        <g transform="translate(206,110) rotate(90)">
+          <path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" fill="#c9909a" opacity=".55"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(45)" fill="#d4a0a8" opacity=".5"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(90)" fill="#c9909a" opacity=".55"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(135)" fill="#d4a0a8" opacity=".5"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(180)" fill="#c9909a" opacity=".55"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(225)" fill="#d4a0a8" opacity=".5"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(270)" fill="#c9909a" opacity=".55"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(315)" fill="#d4a0a8" opacity=".5"/>
+          <circle cx="0" cy="0" r="3" fill="#b06070" opacity=".65"/><circle cx="0" cy="0" r="1.3" fill="#fff" opacity=".55"/>
+        </g>
+        <!-- SE (178,178) — Tulip: 3 cupped bezier petals -->
+        <g transform="translate(178,178) rotate(135)">
+          <path d="M0,0 C-6,-3 -9,-14 -5,-19 C-2,-22 2,-22 5,-19 C9,-14 6,-3 0,0Z" fill="#b06070" opacity=".5"/>
+          <path d="M0,0 C-6,-3 -9,-14 -5,-19 C-2,-22 2,-22 5,-19 C9,-14 6,-3 0,0Z" transform="rotate(120)" fill="#c9909a" opacity=".48"/>
+          <path d="M0,0 C-6,-3 -9,-14 -5,-19 C-2,-22 2,-22 5,-19 C9,-14 6,-3 0,0Z" transform="rotate(240)" fill="#b06070" opacity=".5"/>
+          <circle cx="0" cy="0" r="2.5" fill="#b06070" opacity=".65"/><circle cx="0" cy="0" r="1" fill="#fff" opacity=".55"/>
+        </g>
+        <!-- S (110,206) — Rose -->
+        <g transform="translate(110,206) rotate(180)">
+          <path d="M0,0 C-6,-4 -7,-16 0,-21 C7,-16 6,-4 0,0Z" fill="#b06070" opacity=".5"/><path d="M0,0 C-6,-4 -7,-16 0,-21 C7,-16 6,-4 0,0Z" transform="rotate(72)" fill="#c9909a" opacity=".45"/><path d="M0,0 C-6,-4 -7,-16 0,-21 C7,-16 6,-4 0,0Z" transform="rotate(144)" fill="#b06070" opacity=".45"/><path d="M0,0 C-6,-4 -7,-16 0,-21 C7,-16 6,-4 0,0Z" transform="rotate(216)" fill="#c9909a" opacity=".45"/><path d="M0,0 C-6,-4 -7,-16 0,-21 C7,-16 6,-4 0,0Z" transform="rotate(288)" fill="#b06070" opacity=".5"/>
+          <path d="M0,0 C-4,-3 -5,-12 0,-15 C5,-12 4,-3 0,0Z" transform="rotate(36)" fill="#b06070" opacity=".55"/><path d="M0,0 C-4,-3 -5,-12 0,-15 C5,-12 4,-3 0,0Z" transform="rotate(108)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-4,-3 -5,-12 0,-15 C5,-12 4,-3 0,0Z" transform="rotate(180)" fill="#b06070" opacity=".55"/><path d="M0,0 C-4,-3 -5,-12 0,-15 C5,-12 4,-3 0,0Z" transform="rotate(252)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-4,-3 -5,-12 0,-15 C5,-12 4,-3 0,0Z" transform="rotate(324)" fill="#b06070" opacity=".55"/>
+          <circle cx="0" cy="0" r="2.8" fill="#b06070" opacity=".7"/><circle cx="0" cy="0" r="1.1" fill="#fff" opacity=".6"/>
+        </g>
+        <!-- SW (42,178) — Cherry blossom -->
+        <g transform="translate(42,178) rotate(225)">
+          <path d="M0,0 C-4,-3 -6,-11 -3,-15 C0,-17 0,-17 3,-15 C6,-11 4,-3 0,0Z" fill="#e8b0bc" opacity=".6"/><path d="M0,0 C-4,-3 -6,-11 -3,-15 C0,-17 0,-17 3,-15 C6,-11 4,-3 0,0Z" transform="rotate(72)" fill="#f0c4cc" opacity=".58"/><path d="M0,0 C-4,-3 -6,-11 -3,-15 C0,-17 0,-17 3,-15 C6,-11 4,-3 0,0Z" transform="rotate(144)" fill="#e8b0bc" opacity=".6"/><path d="M0,0 C-4,-3 -6,-11 -3,-15 C0,-17 0,-17 3,-15 C6,-11 4,-3 0,0Z" transform="rotate(216)" fill="#f0c4cc" opacity=".58"/><path d="M0,0 C-4,-3 -6,-11 -3,-15 C0,-17 0,-17 3,-15 C6,-11 4,-3 0,0Z" transform="rotate(288)" fill="#e8b0bc" opacity=".6"/>
+          <circle cx="0" cy="0" r="2.5" fill="#f5d0d8" opacity=".8"/><circle cx="0" cy="0" r="1.2" fill="#b06070" opacity=".8"/>
+        </g>
+        <!-- W (14,110) — Daisy -->
+        <g transform="translate(14,110) rotate(270)">
+          <path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" fill="#c9909a" opacity=".55"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(45)" fill="#d4a0a8" opacity=".5"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(90)" fill="#c9909a" opacity=".55"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(135)" fill="#d4a0a8" opacity=".5"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(180)" fill="#c9909a" opacity=".55"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(225)" fill="#d4a0a8" opacity=".5"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(270)" fill="#c9909a" opacity=".55"/><path d="M0,0 C-3,-3 -3,-14 0,-18 C3,-14 3,-3 0,0Z" transform="rotate(315)" fill="#d4a0a8" opacity=".5"/>
+          <circle cx="0" cy="0" r="3" fill="#b06070" opacity=".65"/><circle cx="0" cy="0" r="1.3" fill="#fff" opacity=".55"/>
+        </g>
+        <!-- NW (42,42) — Tulip -->
+        <g transform="translate(42,42) rotate(315)">
+          <path d="M0,0 C-6,-3 -9,-14 -5,-19 C-2,-22 2,-22 5,-19 C9,-14 6,-3 0,0Z" fill="#b06070" opacity=".5"/>
+          <path d="M0,0 C-6,-3 -9,-14 -5,-19 C-2,-22 2,-22 5,-19 C9,-14 6,-3 0,0Z" transform="rotate(120)" fill="#c9909a" opacity=".48"/>
+          <path d="M0,0 C-6,-3 -9,-14 -5,-19 C-2,-22 2,-22 5,-19 C9,-14 6,-3 0,0Z" transform="rotate(240)" fill="#b06070" opacity=".5"/>
+          <circle cx="0" cy="0" r="2.5" fill="#b06070" opacity=".65"/><circle cx="0" cy="0" r="1" fill="#fff" opacity=".55"/>
+        </g>
       </svg>
 
-      <!-- Inner ring: berry clusters at 6 positions -->
+      <!-- Inner ring: 6 small 4-petal bezier rosebuds -->
       <svg class="ring-inner" style="position:absolute;inset:22px;width:calc(100% - 44px);height:calc(100% - 44px)" viewBox="0 0 196 196" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="98" cy="98" r="84" stroke="#b06070" stroke-width=".7" opacity=".2" stroke-dasharray="2 4"/>
-        <g transform="translate(98,14)"><circle cx="-3" cy="0" r="2.2" fill="#b06070" opacity=".45"/><circle cx="3" cy="0" r="2.2" fill="#c9909a" opacity=".4"/><circle cx="0" cy="-3" r="2" fill="#d4a0a8" opacity=".38"/></g>
-        <g transform="translate(168,56)  rotate(60)"><circle cx="-3" cy="0" r="2.2" fill="#b06070" opacity=".45"/><circle cx="3" cy="0" r="2.2" fill="#c9909a" opacity=".4"/><circle cx="0" cy="-3" r="2" fill="#d4a0a8" opacity=".38"/></g>
-        <g transform="translate(168,140) rotate(120)"><circle cx="-3" cy="0" r="2.2" fill="#b06070" opacity=".45"/><circle cx="3" cy="0" r="2.2" fill="#c9909a" opacity=".4"/><circle cx="0" cy="-3" r="2" fill="#d4a0a8" opacity=".38"/></g>
-        <g transform="translate(98,182) rotate(180)"><circle cx="-3" cy="0" r="2.2" fill="#b06070" opacity=".45"/><circle cx="3" cy="0" r="2.2" fill="#c9909a" opacity=".4"/><circle cx="0" cy="-3" r="2" fill="#d4a0a8" opacity=".38"/></g>
-        <g transform="translate(28,140) rotate(240)"><circle cx="-3" cy="0" r="2.2" fill="#b06070" opacity=".45"/><circle cx="3" cy="0" r="2.2" fill="#c9909a" opacity=".4"/><circle cx="0" cy="-3" r="2" fill="#d4a0a8" opacity=".38"/></g>
-        <g transform="translate(28,56)  rotate(300)"><circle cx="-3" cy="0" r="2.2" fill="#b06070" opacity=".45"/><circle cx="3" cy="0" r="2.2" fill="#c9909a" opacity=".4"/><circle cx="0" cy="-3" r="2" fill="#d4a0a8" opacity=".38"/></g>
+        <circle cx="98" cy="98" r="84" stroke="#b06070" stroke-width=".5" opacity=".16" stroke-dasharray="2 4"/>
+        <!-- 4-petal rosebud: 2 outer + 2 inner bezier petals pointing outward -->
+        <g transform="translate(98,14) rotate(0)"><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" fill="#b06070" opacity=".55"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(90)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(180)" fill="#b06070" opacity=".55"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(270)" fill="#c9909a" opacity=".5"/><circle cx="0" cy="0" r="2" fill="#b06070" opacity=".65"/><circle cx="0" cy="0" r=".8" fill="#fff" opacity=".55"/></g>
+        <g transform="translate(170,56) rotate(60)"><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" fill="#c9909a" opacity=".52"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(90)" fill="#b06070" opacity=".48"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(180)" fill="#c9909a" opacity=".52"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(270)" fill="#b06070" opacity=".48"/><circle cx="0" cy="0" r="2" fill="#b06070" opacity=".62"/><circle cx="0" cy="0" r=".8" fill="#fff" opacity=".55"/></g>
+        <g transform="translate(170,140) rotate(120)"><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" fill="#b06070" opacity=".55"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(90)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(180)" fill="#b06070" opacity=".55"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(270)" fill="#c9909a" opacity=".5"/><circle cx="0" cy="0" r="2" fill="#b06070" opacity=".65"/><circle cx="0" cy="0" r=".8" fill="#fff" opacity=".55"/></g>
+        <g transform="translate(98,182) rotate(180)"><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" fill="#c9909a" opacity=".52"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(90)" fill="#b06070" opacity=".48"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(180)" fill="#c9909a" opacity=".52"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(270)" fill="#b06070" opacity=".48"/><circle cx="0" cy="0" r="2" fill="#b06070" opacity=".62"/><circle cx="0" cy="0" r=".8" fill="#fff" opacity=".55"/></g>
+        <g transform="translate(26,140) rotate(240)"><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" fill="#b06070" opacity=".55"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(90)" fill="#c9909a" opacity=".5"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(180)" fill="#b06070" opacity=".55"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(270)" fill="#c9909a" opacity=".5"/><circle cx="0" cy="0" r="2" fill="#b06070" opacity=".65"/><circle cx="0" cy="0" r=".8" fill="#fff" opacity=".55"/></g>
+        <g transform="translate(26,56) rotate(300)"><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" fill="#c9909a" opacity=".52"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(90)" fill="#b06070" opacity=".48"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(180)" fill="#c9909a" opacity=".52"/><path d="M0,0 C-4,-3 -4,-11 0,-14 C4,-11 4,-3 0,0Z" transform="rotate(270)" fill="#b06070" opacity=".48"/><circle cx="0" cy="0" r="2" fill="#b06070" opacity=".62"/><circle cx="0" cy="0" r=".8" fill="#fff" opacity=".55"/></g>
       </svg>
 
       <div class="wreath-content">
